@@ -15,6 +15,7 @@ import Total from "./Components/Layout/Total/Total";
 function App() {
   const [selectCategory, setSelectCategory] = useState("All");
   const [shwoModal, setShowModal] = useState(false);
+  const [searchItem, setSearchItem] = useState("All");
   const selectCategoryHandler = (select_cat) => {
     setSelectCategory(select_cat);
   };
@@ -25,6 +26,9 @@ function App() {
     setShowModal(false);
   };
   const modalElement = document.getElementById("modal");
+  const searchItemHandler = (searchName) => {
+    setSearchItem(searchName.target.value);
+  };
   return (
     <CartProvider>
       {shwoModal &&
@@ -35,9 +39,9 @@ function App() {
       {shwoModal && ReacDOM.createPortal(<ModalBox />, modalElement)}
 
       <Header />
-      <Helper />
+      <Helper onSeachItem={searchItemHandler} />
       <main className="main">
-        <ItemsList select_cat={selectCategory} />
+        <ItemsList select_cat={selectCategory} searchItemVal={searchItem} />
         <Cart />
         <Categories onSelectCatHandler={selectCategoryHandler} />
         <Total onShowModal={shwoModalHandler} />

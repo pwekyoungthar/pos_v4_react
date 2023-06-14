@@ -26,7 +26,12 @@ const Helper = (props) => {
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
           </label>
-          <input type="text" id="search" />
+          <input
+            type="text"
+            id="search"
+            placeholder="Search For Item Name"
+            onChange={props.onSeachItem}
+          />
         </form>
       </div>
       <div className={classes["current-date"]}>

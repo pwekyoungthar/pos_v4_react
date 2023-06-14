@@ -5,6 +5,10 @@ const ItemsList = (props) => {
   let itemList;
   if (props.select_cat !== "All") {
     itemList = DUMMY_ITEMS.filter((item) => props.select_cat === item.category);
+  } else if (props.searchItemVal !== "All") {
+    itemList = DUMMY_ITEMS.filter((item) =>
+      item.name.toLowerCase().includes(props.searchItemVal)
+    );
   } else {
     itemList = DUMMY_ITEMS.map((item) => item);
   }
